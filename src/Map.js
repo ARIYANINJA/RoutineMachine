@@ -1,17 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import RoutineMachine from "./RoutineMachine";
 
 const Map = () => {
-  const [map, setMap] = useState(null);
   const routingMachineRef = useRef();
-  const pluginRef = useRef();
-
-  useEffect(() => {
-    if (!map) return;
-    const controlContainer = routingMachineRef.current.onAdd(map);
-    pluginRef.current.appendChild(controlContainer);
-  }, [map]);
 
   return (
     <div>
@@ -20,7 +12,6 @@ const Map = () => {
         id="mapId"
         zoom={14}
         center={[47.9188, 106.91761]}
-        whenCreated={setMap}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
